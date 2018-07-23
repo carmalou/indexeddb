@@ -95,3 +95,15 @@ window.addEventListener('online', function(event) {
   console.log('You\'ve regained your internet connection! So we\'ve retrieved your data.');
   console.log('Here is your data!');
 });
+
+if(navigator.serviceWorker) {
+  navigator.serviceWorker.register('./serviceworker.js')
+  .then(registration => navigator.serviceWorker.ready)
+  .then(function(registration) {
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      registration.sync.register('test-sync').then(() => {
+        console.log('Sync registered!');
+      });
+    });
+  });
+}
