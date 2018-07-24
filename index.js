@@ -89,12 +89,12 @@ window.addEventListener('offline', function(event) {
   console.log('\n');
 });
 
-window.addEventListener('online', function(event) {
-	// if we regain connection, we can go ahead and retrieve the data
-  getData();
-  console.log('You\'ve regained your internet connection! So we\'ve retrieved your data.');
-  console.log('Here is your data!');
-});
+// window.addEventListener('online', function(event) {
+// 	// if we regain connection, we can go ahead and retrieve the data
+//   getData();
+//   console.log('You\'ve regained your internet connection! So we\'ve retrieved your data.');
+//   console.log('Here is your data!');
+// });
 
 if(navigator.serviceWorker) {
   navigator.serviceWorker.register('./serviceworker.js')

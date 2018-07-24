@@ -27,20 +27,56 @@ self.oninstall = function(event) {
 }
 
 self.addEventListener('sync', function(event) {
-    console.log('sync event!');
-    console.log(event);
-    console.log();
-})
+    console.log('i am sync');
+    console.log('event-tag == ', event.tag);
+    console.log(new Date());
+    event.waitUntil(sendToServer().catch((err) => {
+        if(event.lastChance) {
+            console.log('LAST CHANCE');
+        }
+    }));
+});
 
 function accessIndexedDB() {
     var myDB = indexedDB.open('testEmailDB');
 
-    console.log('myDB from accessIndexedDB ', myDB);
+    return new Promise(function (resolve, reject) {
+        myDB.onsuccess = function(event) {
+            var request = this.result.transaction("emailObjStore").objectStore("emailObjStore").getAll();
+            
+            request.onsuccess = function(event) {
+                resolve(event.target.result);
+            };
 
-    myDB.onsuccess = function(event) {
-        this.result.transaction("emailObjStore").objectStore("emailObjStore").getAll().onsuccess = function(event) {
-            console.log(event.target.result);
-            return event.target.result;
+            request.onerror = function (err) {
+                reject(err);
+            };
         };
-    }
+
+        myDB.onerror = function (err) {
+            reject(err);
+        };
+    });
+}
+
+function sendToServer() {
+    return accessIndexedDB()
+        .then(function (data) {
+            return Promise.all(data.map(function(response) {
+                return fetch('http://www.mocky.io/v2/5b568fb131000053004d1df2', {
+                        method: 'POST',
+                        data: response
+                    })
+                    .then(function(rez2) {
+                        return rez2.json();
+                    })
+                    .then(function(rez2) {
+                        console.log('sync response: ', rez2);
+                        return rez2;
+                    })
+            }))
+            .then(function(response) {
+                console.log('arr of fetches: ', response);
+            })
+        })
 }
