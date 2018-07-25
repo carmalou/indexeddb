@@ -63,7 +63,7 @@ function sendToServer() {
     return accessIndexedDB()
         .then(function (data) {
             return Promise.all(data.map(function(response) {
-                return fetch('http://www.mocky.io/v2/5b568fb131000053004d1df2', {
+                return fetch('https://www.mocky.io/v2/5b568fb131000053004d1df2', {
                         method: 'POST',
                         data: response
                     })
