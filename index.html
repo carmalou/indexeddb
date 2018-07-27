@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <head>
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <title>An IndexedDB Prototype</title>
+
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Open up your console to follow along with what's happening!</h1>
-<form name="myForm">
-  <label for="myName">Your Name:</label>
-  <input name="myName" id="myNameInput">
-  
-  <br /><br />
-  
-  <label for="myEmail">Your Email:</label>
-  <input name="myEmail" id="myEmailInput">
-  
-  <br /><br />
-  
-  <button id="submitBtn">Submit</button>
-</form>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="text-center">
+      <h1 class="h3 mb-3 font-weight-normal">Open up your console to follow along with what's happening!</h1>
+      <form name="myForm" class="form-signin">
+        <label for="myName" class="sr-only">Your Name:</label>
+        <input name="myName" class="form-control" id="myNameInput">
+        
+        <br /><br />
+        
+        <label for="myEmail" class="sr-only">Your Email:</label>
+        <input name="myEmail" class="form-control" id="myEmailInput">
+        
+        <br /><br />
+        
+        <button id="submitBtn" class="btn btn-lg btn-primary btn-block">Submit</button>
+      </form>
 
-<br />
+        <br />
 
-<button id="fetch-data">Fetch Data</button>
+        <button id="fetch-data" class="btn btn-lg btn-primary btn-block">Fetch Data</button>
 
-<br />
+        <br />
 
-<button id="delete-data">Delete Data</button>
+      <button id="delete-data" class="btn btn-lg btn-primary btn-block">Delete Data</button>
+    </div>
+  </div>
 
 </body>
 
+<!-- Latest compiled and minified JavaScript -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="index.js"></script>
 
 </html>
