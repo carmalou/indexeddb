@@ -1,15 +1,11 @@
 self.oninstall = function(event) {
-    self.oninstall = function(event) {
         // this function runs on install
         // first it opens/defines a cache for our files to live
         // next it adds those files to the cache
         // last it catches any errors
     
-        var version = '1.0.0';
-        var cacheName = 'ThunderplainsCountdown' + version;
-    
         // first we open/define our cache
-        caches.open(cacheName)
+        caches.open('indexedDBSample')
         .then(function(cache) {
             cache.addAll([
                 '/',
