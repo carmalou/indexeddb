@@ -19,7 +19,6 @@ self.oninstall = function(event) {
         .catch(function(err) {
             console.log('Err: ', err);
         })
-    }
 }
 
 self.addEventListener('sync', function(event) {
